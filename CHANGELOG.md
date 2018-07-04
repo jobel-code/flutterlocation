@@ -1,3 +1,27 @@
+## [1.3.4] 4th June 2018
+* Fix crash for Android API pre 27 thanks to matthewtsmith.
+
+
+## [1.3.3] 30th May 2018
+* Correct implementation of iOS plugin to match Android behaviour. No need to call getLocation 
+to get permissions for location callbacks.
+
+
+## [1.3.2] 30th May 2018
+* Change implementation to api in build.gradle in order to solve incompatibilities between 
+GMS versions thanks to luccascorrea 
+
+## [1.3.1] 29th May 2018
+* Added speed and speed_accuracy (only Android truly discover speed accuracy, so its always 0 for now on iOS)
+* Solved a crash
+
+
+## [1.3.0] 27th May 2018
+* Make it compatible with Firebase thanks to quangIO
+* Resolve runtime error exception thanks to jharrison902  
+* Update gitignore thanks to bcko
+
+
 ## [1.2.0] 5th April 2018
 * Permissions denied on Android handled thanks to g123k 
 * Dart 2 update thanks to efortuna

@@ -35,6 +35,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 
 import java.util.HashMap;
+import java.lang.RuntimeException;
 
 import io.flutter.plugin.common.EventChannel;
 import io.flutter.plugin.common.EventChannel.EventSink;
@@ -134,6 +135,10 @@ public class LocationPlugin implements MethodCallHandler, StreamHandler {
                 loc.put("longitude", location.getLongitude());
                 loc.put("accuracy", (double) location.getAccuracy());
                 loc.put("altitude", location.getAltitude());
+                loc.put("speed", (double) location.getSpeed());
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    loc.put("speed_accuracy", (double) location.getSpeedAccuracyMetersPerSecond());
+                }
                 events.success(loc);
             }
         };
@@ -221,6 +226,11 @@ public class LocationPlugin implements MethodCallHandler, StreamHandler {
                     loc.put("longitude", location.getLongitude());
                     loc.put("accuracy", (double) location.getAccuracy());
                     loc.put("altitude", location.getAltitude());
+                    loc.put("speed", (double) location.getSpeed());
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        loc.put("speed_accuracy", (double) location.getSpeedAccuracyMetersPerSecond());
+                    }
+
                     if (result != null) {
                         result.success(loc);
                         return;

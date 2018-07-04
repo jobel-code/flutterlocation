@@ -1,4 +1,4 @@
-# Flutter Location Plugin
+# Flutter Location Plugin [![pub package](https://img.shields.io/pub/v/location.svg)](https://pub.dartlang.org/packages/location)
 
 This plugin for [Flutter](https://flutter.io)
 handles getting location on Android and iOS. It also provides callbacks when location is changed.
@@ -27,7 +27,7 @@ Then you just have to import the package with
 import 'package:location/location.dart';
 ```
 
-Look into the example for utilisation, but a basic implementation can be done like this for one time call :
+Look into the example for utilisation, but a basic implementation can be done like this for a one time location :
 ```dart
 var currentLocation = <String, double>{};
 
@@ -41,7 +41,7 @@ try {
 }
 ```
 
-You can also get continuous callbacks when your position is changing :
+You can also get continuous callbacks when your position is changing:
 ```dart
 var location = new Location();
 
@@ -50,15 +50,18 @@ location.onLocationChanged.listen((Map<String,double> currentLocation) {
   print(currentLocation["longitude"]);
   print(currentLocation["accuracy"]);
   print(currentLocation["altitude"]);
+  print(currentLocation["speed"]);
+  print(currentLocation["speed_accuracy"]); // Will always be 0 on iOS
 });
 ```
 
-If you want a one shot updated location :
-```dart
-var location = new Location();
+## API
+In this table you can find the different functions exposed by this plugin:
 
-Map<String,double> currentlocation = location.onLocationChanged.firstWhere((d) => d != null);
-```
+| Methods ||
+|--------|-----|
+| Future<Map<String, double>> | **getLocation** <br> Allow to get a one time position of the user. |
+| Stream<Map<String, double>> | **onLocationChanged** <br> Get the stream of the user's location. |
 
 ## Feedback
 
